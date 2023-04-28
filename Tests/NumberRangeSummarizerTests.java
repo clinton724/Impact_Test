@@ -5,6 +5,7 @@ import myclasses.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 import java.util.Collection;
+import java.util.ArrayList;
 
 public class NumberRangeSummarizerTests {
     @Test
@@ -18,11 +19,22 @@ public class NumberRangeSummarizerTests {
     }
 
     @Test
-    public void emptyInputThrowsException() {
+    public void emptyInputStringThrowsException() {
+        
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
             ListOfNumbers listOfNumbers = new ListOfNumbers();
             String nums = "";
             listOfNumbers.collect(nums);
+        });
+        assertEquals("Input cannot be empty", exception.getMessage());
+    }
+
+    @Test 
+    public void emptyInputListThrowsException(){
+        ArrayList<Integer> myList = new ArrayList<Integer>();
+        Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
+            ListOfNumbers listOfNumbers = new ListOfNumbers();
+            listOfNumbers.summarizeCollection(myList);
         });
         assertEquals("Input cannot be empty", exception.getMessage());
     }

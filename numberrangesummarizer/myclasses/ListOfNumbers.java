@@ -20,7 +20,7 @@ public class ListOfNumbers implements NumberRangeSummarizer {
           String result = "";
           int length = 1;
           if(input.size() == 0) {
-            return "false";
+            throw new IllegalArgumentException("Input cannot be empty");
           }
           List<Integer> sortedList = input.stream().sorted().collect(Collectors.toList());
           int n = sortedList.size();
