@@ -5,7 +5,7 @@ public class Main {
     public static void main(String args[]) {
       
         ListOfNumbers numbers = new ListOfNumbers();
-        String nums = ",3,6,7,8,12,13,14,15,21,22,23,24";
+        String nums = "1,2,5,4,78,12,13,4,0,1,800,600,1500,34";
         if(numbers.validateInput(nums) == true) {
             Collection<Integer> num = numbers.collect(nums);
             String result = numbers.summarizeCollection(num); 

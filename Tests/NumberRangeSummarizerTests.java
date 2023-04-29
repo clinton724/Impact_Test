@@ -54,6 +54,8 @@ public class NumberRangeSummarizerTests {
         assertEquals(listOfNumbers.validateInput(input), false);
         input = "1,2,5,4,78,12,13,4,0,1,800,600,1500,34";
         assertEquals(listOfNumbers.validateInput(input), true);
+        input = "2,5";
+        assertEquals(listOfNumbers.validateInput(input), true);
     }
 
     @Test
@@ -63,5 +65,9 @@ public class NumberRangeSummarizerTests {
         Collection<Integer> num = numbers.collect(input);
         String result = numbers.summarizeCollection(num); 
         assertEquals(result, "1, 3, 6-8, 12-15, 21-24, 31");
+        input = "1,2,5,4,78,12,13,4,0,1,800,600,1500,34";
+        num = numbers.collect(input);
+        result = numbers.summarizeCollection(num);
+        assertEquals(result, "0-1, 1-2, 4, 4-5, 12-13, 34, 78, 600, 800, 1500");
     }
 }
