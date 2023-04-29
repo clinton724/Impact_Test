@@ -5,15 +5,19 @@ public class Main {
     public static void main(String args[]) {
       
         ListOfNumbers numbers = new ListOfNumbers();
-        String nums = "7,3,6,1,8,12,13,14,31,21,22,23,24,15";
-        Collection<Integer> num = numbers.collect(nums);
-        System.out.println(num.getClass().getSimpleName());
-        String result = numbers.summarizeCollection(num);  
-        System.out.println(result.getClass().getSimpleName());
-        for (int i = 0; i < result.length(); i++) {
+        String nums = ",3,6,7,8,12,13,14,15,21,22,23,24";
+        if(numbers.validateInput(nums) == true) {
+            Collection<Integer> num = numbers.collect(nums);
+            String result = numbers.summarizeCollection(num); 
+
+            for (int i = 0; i < result.length(); i++) {
    
-          // Print current character
-          System.out.print(result.charAt(i));
-      }
+                // Print current character
+                System.out.print(result.charAt(i));
+            }
+        }
+       
+       
+      
      }
 }

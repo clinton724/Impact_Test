@@ -6,10 +6,36 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ListOfNumbers implements NumberRangeSummarizer {
+
+      public boolean validateInput(String input) {
+        int currentNumber = 0;
+        int index = input.indexOf(',');
+        String substr;
+        if(index == -1 || input.indexOf(',') == 0 || input.lastIndexOf(',') == input.length()-1) {
+            return false;
+        }
+        while (index != -1) {
+            substr = input.substring(currentNumber,index+1);
+            System.out.println(substr);
+             if(substr.matches("[0-9]+[,]") == false) {
+                return false;
+            }
+            currentNumber = index+1;
+            index = input.indexOf(',', index + 1);
+        }
+        int lastIndex = input.lastIndexOf(',');
+        substr = input.substring(lastIndex+1,input.length());
+        System.out.println(substr);
+        if(substr.matches("[0-9]+") == false) {
+            return false;
+        }
+        return true; 
+      }
   
       public  Collection<Integer> collect(String input) {
-          if(input.length() == 0) {
-            throw new IllegalArgumentException("Input cannot be empty");
+          System.out.println(validateInput(input));
+          if(input.length() == 0 || validateInput(input) == false) {
+            throw new IllegalArgumentException("Invalid input.");
           }
           List<Integer> list = Arrays.asList(input.split(",")).stream().map(s -> Integer.parseInt(s.trim())).collect(Collectors.toList());
           return list;

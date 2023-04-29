@@ -26,7 +26,7 @@ public class NumberRangeSummarizerTests {
             String nums = "";
             listOfNumbers.collect(nums);
         });
-        assertEquals("Input cannot be empty", exception.getMessage());
+        assertEquals("Invalid input.", exception.getMessage());
     }
 
     @Test 
@@ -37,5 +37,31 @@ public class NumberRangeSummarizerTests {
             listOfNumbers.summarizeCollection(myList);
         });
         assertEquals("Input cannot be empty", exception.getMessage());
+    }
+
+    @Test 
+    public void validateInput() {
+        ListOfNumbers listOfNumbers = new ListOfNumbers();
+        String input = "23$5^%&&pdfgndj";
+        assertEquals(listOfNumbers.validateInput(input), false);
+        input = "2364758";
+        assertEquals(listOfNumbers.validateInput(input), false);
+        input = ",23445";
+        assertEquals(listOfNumbers.validateInput(input), false);
+        input = "23,45,";
+        assertEquals(listOfNumbers.validateInput(input), false);
+        input = "5,e,t,w,7";
+        assertEquals(listOfNumbers.validateInput(input), false);
+        input = "1,2,5,4,78,12,13,4,0,1,800,600,1500,34";
+        assertEquals(listOfNumbers.validateInput(input), true);
+    }
+
+    @Test
+    public void validateOutput() {
+        ListOfNumbers numbers = new ListOfNumbers();
+        String input = "1,3,6,7,8,12,13,14,15,21,22,23,24,31";
+        Collection<Integer> num = numbers.collect(input);
+        String result = numbers.summarizeCollection(num); 
+        assertEquals(result, "1, 3, 6-8, 12-15, 21-24, 31");
     }
 }
