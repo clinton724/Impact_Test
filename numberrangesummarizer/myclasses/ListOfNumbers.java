@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class ListOfNumbers implements NumberRangeSummarizer {
 
     // Validate the format of the input
-    public boolean validateInput(String input) {
+    public boolean isInputValid(String input) {
         int currentNumber = 0;
         int index = input.indexOf(',');
         String substr;
@@ -54,7 +54,7 @@ public class ListOfNumbers implements NumberRangeSummarizer {
          * If the format is invalid or string is empty, an exception is
          * is thrown.
          */
-        if (input.length() == 0 || validateInput(input) == false) {
+        if (input.length() == 0 || isInputValid(input) == false) {
             throw new IllegalArgumentException("Invalid input.");
         }
 
