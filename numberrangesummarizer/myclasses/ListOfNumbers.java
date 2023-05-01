@@ -87,7 +87,7 @@ public class ListOfNumbers implements NumberRangeSummarizer {
                 /*
                  * If the range contains
                  * only one element.
-                 * add it into the list
+                 * append it to the string
                  */
                 if (length == 1) {
                     result = result + Integer.toString(sortedList.get(index - length)) + ", ";
@@ -96,7 +96,7 @@ public class ListOfNumbers implements NumberRangeSummarizer {
                     /*
                      * Build the range between the first
                      * element of the range and the
-                     * current previous element as the i-1
+                     * current previous element as the index-1
                      * last range.
                      */
                     String temp = Integer.toString(sortedList.get(index - length)) +
@@ -114,6 +114,7 @@ public class ListOfNumbers implements NumberRangeSummarizer {
                 length++;
             }
         }
+        
         String newResult = result.substring(0, result.length() - 2);
         return newResult;
     }
