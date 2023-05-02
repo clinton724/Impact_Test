@@ -9,8 +9,6 @@ public class Main {
         if(numbers.isInputValid(nums) == true) {
             Collection<Integer> num = numbers.collect(nums);
             String result = numbers.summarizeCollection(num); 
-
-            System.out.println(result);  
         }
      }
 }
